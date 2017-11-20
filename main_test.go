@@ -6,6 +6,8 @@ import (
 	"fmt"
 
 	golua "github.com/Shopify/go-lua"
+	"github.com/xtaci/kcp-go"
+	"github.com/yuin/charsetutil"
 	"github.com/yuin/gopher-lua"
 )
 
@@ -87,4 +89,41 @@ func BenchmarkMsgpack(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 
 	}
+}
+
+func TestKcpServer(t *testing.T) {
+	lis, err := kcp.Listen(":10000")
+	if err != nil {
+		sugar.Infow("kcp listen error", "err", err)
+		return
+	}
+
+	go func() {
+		defer lis.Close()
+
+		for {
+			conn, err := lis.Accept()
+			if err != nil {
+				sugar.Infow("kcp accept error", "err", err)
+				continue
+			}
+
+			go func() {
+
+				defer conn.Close()
+				buf := make([]byte, 1024)
+				for {
+					bytesRead, err := conn.Read(buf)
+					if err != nil {
+						break
+					}
+
+					str, err := charsetutil.Decode(buf[:bytesRead], "utf8")
+					if err == nil {
+						sugar.Infow("receive", "str", str)
+					}
+				}
+			}()
+		}
+	}()
 }
