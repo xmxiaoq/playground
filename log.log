@@ -1,0 +1,92 @@
+2017-11-14T19:42:00.957+0800	INFO	playground/main.go:233	logger info
+2017-11-14T19:42:00.977+0800	INFO	playground/main.go:234	sugar info xiaoq
+2017-11-14T19:42:00.978+0800	INFO	playground/main.go:248		{"str": "£5 for Peppé"}
+2017-11-14T19:43:25.438+0800	INFO	playground/main.go:233	logger info
+2017-11-14T19:43:25.458+0800	INFO	playground/main.go:234	sugar info xiaoq
+2017-11-14T19:43:25.459+0800	INFO	playground/main.go:248	decode ok	{"str": "£5 for Peppé"}
+{"level":"info","ts":1510659851.8036659,"caller":"playground/main.go:233","msg":"logger info"}
+{"level":"info","ts":1510659851.8046684,"caller":"playground/main.go:234","msg":"sugar info xiaoq"}
+{"level":"info","ts":1510659851.8046684,"caller":"playground/main.go:248","msg":"decode ok","str":"£5 for Peppé"}
+2017-11-14T19:45:06.595+0800	INFO	playground/main.go:233	logger info
+2017-11-14T19:45:06.618+0800	INFO	playground/main.go:234	sugar info xiaoq
+2017-11-14T19:45:06.619+0800	INFO	playground/main.go:248	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T19:49:58.277+0800	INFO	playground/main.go:233	logger info
+2017-11-14T19:49:58.298+0800	INFO	playground/main.go:234	sugar info xiaoq
+2017-11-14T19:49:58.298+0800	INFO	playground/main.go:235		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-14T19:49:58.298+0800	INFO	playground/main.go:249	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T20:21:37.913+0800	INFO	playground/main.go:242	logger info
+2017-11-14T20:21:37.934+0800	INFO	playground/main.go:243	sugar info xiaoq
+2017-11-14T20:21:37.934+0800	INFO	playground/main.go:244		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-14T20:21:37.934+0800	INFO	playground/main.go:258	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T20:23:08.784+0800	INFO	playground/main.go:242	logger info
+2017-11-14T20:23:08.804+0800	INFO	playground/main.go:243	sugar info xiaoq
+2017-11-14T20:23:08.804+0800	INFO	playground/main.go:244		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-14T20:23:08.805+0800	INFO	playground/main.go:258	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T20:24:30.485+0800	INFO	playground/main.go:242	logger info
+2017-11-14T20:24:30.504+0800	INFO	playground/main.go:243	sugar info xiaoq
+2017-11-14T20:24:30.504+0800	INFO	playground/main.go:244		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-14T20:24:30.504+0800	INFO	playground/main.go:258	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T20:24:30.505+0800	ERROR	playground/main.go:160	kcp listen error	{"err": "net.ListenUDP: listen udp 192.168.0.149:10000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.", "errVerbose": "listen udp 192.168.0.149:10000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.\nnet.ListenUDP\ngithub.com/xtaci/kcp-go.ListenWithOptions\n\tC:/Users/41956/go/src/github.com/xtaci/kcp-go/sess.go:891\ngithub.com/xtaci/kcp-go.Listen\n\tC:/Users/41956/go/src/github.com/xtaci/kcp-go/sess.go:880\nmain.KcpServer\n\tC:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:158\nmain.main\n\tC:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:273\nruntime.main\n\tC:/Go/src/runtime/proc.go:195\nruntime.goexit\n\tC:/Go/src/runtime/asm_amd64.s:2337"}
+main.KcpServer
+	C:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:160
+main.main
+	C:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:273
+runtime.main
+	C:/Go/src/runtime/proc.go:195
+2017-11-14T20:25:08.934+0800	INFO	playground/main.go:242	logger info
+2017-11-14T20:25:08.955+0800	INFO	playground/main.go:243	sugar info xiaoq
+2017-11-14T20:25:08.955+0800	INFO	playground/main.go:244		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-14T20:25:08.955+0800	INFO	playground/main.go:258	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T20:26:14.961+0800	INFO	playground/main.go:242	logger info
+2017-11-14T20:26:14.982+0800	INFO	playground/main.go:243	sugar info xiaoq
+2017-11-14T20:26:14.982+0800	INFO	playground/main.go:244		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-14T20:26:14.983+0800	INFO	playground/main.go:258	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T20:26:14.984+0800	ERROR	playground/main.go:160	kcp listen error	{"err": "net.ListenUDP: listen udp 192.168.0.149:10000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.", "errVerbose": "listen udp 192.168.0.149:10000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.\nnet.ListenUDP\ngithub.com/xtaci/kcp-go.ListenWithOptions\n\tC:/Users/41956/go/src/github.com/xtaci/kcp-go/sess.go:891\ngithub.com/xtaci/kcp-go.Listen\n\tC:/Users/41956/go/src/github.com/xtaci/kcp-go/sess.go:880\nmain.KcpServer\n\tC:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:158\nmain.main\n\tC:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:273\nruntime.main\n\tC:/Go/src/runtime/proc.go:195\nruntime.goexit\n\tC:/Go/src/runtime/asm_amd64.s:2337"}
+main.KcpServer
+	C:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:160
+main.main
+	C:/Users/41956/go/src/github.com/xmxiaoq/playground/main.go:273
+runtime.main
+	C:/Go/src/runtime/proc.go:195
+2017-11-14T20:26:33.806+0800	INFO	playground/main.go:242	logger info
+2017-11-14T20:26:33.827+0800	INFO	playground/main.go:243	sugar info xiaoq
+2017-11-14T20:26:33.827+0800	INFO	playground/main.go:244		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-14T20:26:33.828+0800	INFO	playground/main.go:258	decode ok	{"str": "£5 for Peppé"}
+2017-11-14T20:27:43.438+0800	INFO	playground/main.go:171	new connection
+2017-11-14T20:28:05.647+0800	INFO	playground/main.go:200	read ok	{"n": 12, "buf": "hello 中文"}
+2017-11-14T20:28:05.647+0800	INFO	playground/main.go:208	read2 ok	{"n": 12, "buf": "hello 中文"}
+2017-11-14T20:28:05.648+0800	INFO	playground/main.go:217	write ok	{"m": 12}
+2017-11-15T14:17:01.672+0800	INFO	playground/main.go:246	logger info
+2017-11-15T14:17:01.693+0800	INFO	playground/main.go:247	sugar info xiaoq
+2017-11-15T14:17:01.693+0800	INFO	playground/main.go:248		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-15T14:17:01.693+0800	INFO	playground/main.go:262	decode ok	{"str": "£5 for Peppé"}
+2017-11-20T17:35:46.106+0800	INFO	playground/main.go:258	logger info
+2017-11-20T17:35:46.149+0800	INFO	playground/main.go:259	sugar info xiaoq
+2017-11-20T17:35:46.149+0800	INFO	playground/main.go:260		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-20T17:35:46.149+0800	INFO	playground/main.go:274	decode ok	{"str": "£5 for Peppé"}
+2017-11-20T17:36:42.618+0800	INFO	playground/main.go:175	new connection
+2017-11-20T17:36:42.618+0800	INFO	playground/main.go:230	write ok	{"m": 10}
+2017-11-20T17:38:40.984+0800	INFO	playground/main.go:175	new connection
+2017-11-20T17:38:40.984+0800	INFO	playground/main.go:230	write ok	{"m": 10}
+2017-11-20T17:41:42.492+0800	INFO	playground/main.go:175	new connection
+2017-11-20T17:41:42.492+0800	INFO	playground/main.go:230	write ok	{"m": 10}
+2017-11-20T17:44:47.246+0800	INFO	playground/main.go:175	new connection
+2017-11-20T17:44:47.247+0800	INFO	playground/main.go:230	write ok	{"m": 10}
+2017-11-20T18:54:43.868+0800	INFO	playground/main.go:260	logger info
+2017-11-20T18:54:43.891+0800	INFO	playground/main.go:261	sugar info xiaoq
+2017-11-20T18:54:43.891+0800	INFO	playground/main.go:262		{"中文byte": "5Lit5paH", "中文string": "中文"}
+2017-11-20T18:54:43.891+0800	INFO	playground/main.go:276	decode ok	{"str": "£5 for Peppé"}
+2017-11-20T19:12:26.520+0800	INFO	playground/main.go:176	new connection
+2017-11-20T19:12:26.520+0800	INFO	playground/main.go:208	read ok	{"n": 256, "len": 12, "buf": "hello 中文\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"}
+2017-11-20T20:05:47.695+0800	INFO	playground/main.go:176	new connection
+2017-11-20T20:05:47.696+0800	INFO	playground/main.go:208	read ok	{"n": 256, "len": 12, "buf": "hello 中文\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"}
+2017-11-20T20:27:23.116+0800	INFO	playground/main.go:176	new connection
+2017-11-20T20:27:23.116+0800	INFO	playground/main.go:208	read ok	{"n": 14, "len": 0, "buf": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"}
+2017-11-20T20:30:23.031+0800	INFO	playground/main.go:176	new connection
+2017-11-20T20:30:23.031+0800	INFO	playground/main.go:208	read ok	{"n": 14, "len": 0, "buf": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"}
+2017-11-20T20:34:01.612+0800	INFO	playground/main.go:176	new connection
+2017-11-20T20:34:01.612+0800	INFO	playground/main.go:208	read ok	{"n": 14, "len": 12, "buf": "hello 中文"}
+2017-11-20T20:43:55.718+0800	INFO	playground/main.go:176	new connection
+2017-11-20T20:43:55.719+0800	INFO	playground/main.go:208	read ok	{"n": 14, "len": 12, "buf": "hello 中文"}
+2017-11-20T20:47:44.673+0800	INFO	playground/main.go:176	new connection
+2017-11-20T20:47:44.673+0800	INFO	playground/main.go:208	read ok	{"n": 14, "len": 12, "buf": "hello 中文"}
