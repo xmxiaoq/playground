@@ -1,21 +1,16 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net"
 	"os"
-
 	"strconv"
-
-	"encoding/json"
 	"time"
 
-	"bytes"
-
-	"io/ioutil"
-
-	"encoding/binary"
-
+	"github.com/GianlucaGuarini/go-observable"
 	golua "github.com/Shopify/go-lua"
 	"github.com/asaskevich/EventBus"
 	"github.com/chuckpreslar/emission"
@@ -24,12 +19,13 @@ import (
 	"github.com/kr/pretty"
 	"github.com/paulrosania/go-charset/charset"
 	_ "github.com/paulrosania/go-charset/data"
+	"github.com/pquerna/ffjson/ffjson"
 	"github.com/shurcooL/go-goon"
 	"github.com/spf13/cast"
-	"github.com/xmxiaoq/playground/pb/gogofaster_out"
+	"github.com/tinylib/msgp/msgp"
+	"github.com/xmxiaoq/playground/msg"
 	"github.com/xtaci/kcp-go"
 	"github.com/y0ssar1an/q"
-	"github.com/yuin/charsetutil"
 	"github.com/yuin/gopher-lua"
 	"go.uber.org/zap"
 )
@@ -462,37 +458,65 @@ func KcpServer() {
 			//	sugar.Errorw("write error", "err", err)
 			//}
 
-			bufSend := bytes.NewBuffer(nil)
-			buf := make([]byte, 1024)
+			membuf := bytes.NewBuffer(nil)
+			enc := ffjson.NewEncoder(membuf)
+			msgpR := msgp.NewReader(conn)
+			//bufSend := bytes.NewBuffer(nil)
 			for {
-				n, err := conn.Read(buf)
-				if err != nil {
-					sugar.Errorw("kcp read error", "err", err)
-					continue
-				}
-				if n <= 0 {
-					//_, err := conn.Write([]byte("from server"))
-					//if err != nil {
-					//	sugar.Errorw("write error", "err", err)
-					//}
-					continue
-				}
+				//header := make([]byte, 2)
+				//n, err := io.ReadFull(conn, header)
+				//if err != nil {
+				//	sugar.Errorw("kcp read error", "err", err)
+				//	continue
+				//}
+				//
+				//if n <= 0 {
+				//	//_, err := conn.Write([]byte("from server"))
+				//	//if err != nil {
+				//	//	sugar.Errorw("write error", "err", err)
+				//	//}
+				//	continue
+				//}
+				//
+				//dataLen := binary.BigEndian.Uint16(header)
+				//buf := make([]byte, dataLen)
+				//
+				//_, err = io.ReadFull(conn, buf)
+				//if err != nil {
+				//	sugar.Errorw("msg length error", "err", err)
+				//	continue
+				//}
+				//
+				//samp := &Sample3List{}
+				//_, err = samp.UnmarshalMsg(buf)
+				//if err != nil {
+				//	sugar.Errorw("decode error", "err", err)
+				//}
+				//continue
 
-				len := binary.BigEndian.Uint16(buf)
-				samp := &Sample3{}
-				_, err = samp.UnmarshalMsg(buf[2:len])
+				//samp := &Sample3List{}
+				samp := &msg.Sample3{}
+				err = samp.DecodeMsg(msgpR)
 				if err != nil {
 					sugar.Errorw("decode error", "err", err)
 				}
-				continue
+				sugar.Infow("DecodeMsg ok", "samp", samp)
 
-				str, err := charsetutil.Decode(buf[2:n], "utf8")
+				membuf.Reset()
+				err = enc.Encode(samp)
 				if err != nil {
 					sugar.Errorw("decode error", "err", err)
-					continue
 				}
-				sugar.Infow("read ok", "n", n, "len", len, "buf", str)
+				sugar.Infow("DecodeMsg ok", "sampJson", string(membuf.Bytes()))
 				continue
+
+				//str, err := charsetutil.Decode(buf[2:n], "utf8")
+				//if err != nil {
+				//	sugar.Errorw("decode error", "err", err)
+				//	continue
+				//}
+				//sugar.Infow("read ok", "n", n, "dataLen", dataLen, "buf", str)
+				//continue
 
 				//str, err = Decode(buf[0:n], "utf8")
 				//if err != nil {
@@ -504,21 +528,21 @@ func KcpServer() {
 
 				cast.ToString(100)
 
-				msg := &proto3_proto.Message{Name: "数据"}
-				msgBuf, err := msg.Marshal()
-				if err == nil {
-					bufSend.Reset()
-					nn := int16(n)
-					binary.Write(bufSend, binary.BigEndian, nn)
-					binary.Write(bufSend, binary.BigEndian, msgBuf)
-					m, err := conn.Write(bufSend.Bytes())
-					if err != nil {
-						sugar.Errorw("write error", "err", err)
-					} else {
-						sugar.Infow("write ok", "m", m)
-					}
-
-				}
+				//msg := &proto3_proto.Message{Name: "数据"}
+				//msgBuf, err := msg.Marshal()
+				//if err == nil {
+				//	bufSend.Reset()
+				//	nn := int16(n)
+				//	binary.Write(bufSend, binary.BigEndian, nn)
+				//	binary.Write(bufSend, binary.BigEndian, msgBuf)
+				//	m, err := conn.Write(bufSend.Bytes())
+				//	if err != nil {
+				//		sugar.Errorw("write error", "err", err)
+				//	} else {
+				//		sugar.Infow("write ok", "m", m)
+				//	}
+				//
+				//}
 			}
 		}()
 	}
@@ -538,7 +562,8 @@ func Decode(buf []byte, enc string) (string, error) {
 }
 
 func main() {
-	cfg := zap.NewDevelopmentConfig()
+	//cfg := zap.NewDevelopmentConfig()
+	cfg := zap.NewProductionConfig()
 	cfg.OutputPaths = append(cfg.OutputPaths, "playground.log")
 	logger, _ = cfg.Build()
 	sugar = logger.Sugar()
@@ -558,15 +583,14 @@ func main() {
 	//TestDeferWhenFatal()
 	//TestObservable()
 	//TestEmitterRemoveOnce()
-	TestEventBus()
+	//TestEventBus()
 
 	str, err := Decode([]byte("\xa35 for Pepp\xe9"), "latin1")
 	if err != nil {
-		sugar.Errorw("", "err", err)
+		sugar.Errorw("Decode error", "err", err)
 		return
 	}
-
-	sugar.Infow("decode ok", "str", str)
+	sugar.Infow(`Decode "ok`, "str", str)
 
 	//for {
 	//	var s string
@@ -575,6 +599,25 @@ func main() {
 	//		break
 	//	}
 	//}
+
+	//obj := &msg.Sample3{}
+	//obj.Age = 10
+	//obj.FirstName = "中文"
+	//obj.LastName = "字符"
+	//buf, err := obj.MarshalMsg(nil)
+	//if err != nil {
+	//	sugar.Errorw("MarshalMsg error", "err", err)
+	//	return
+	//}
+	//sugar.Infow("MarshalMsg ok", "buf", buf)
+	//
+	//obj2 := &msg.Sample3{}
+	//_, err = obj2.UnmarshalMsg(buf)
+	//if err != nil {
+	//	sugar.Errorw("UnmarshalMsg error", "err", err)
+	//	return
+	//}
+	//sugar.Infow("UnmarshalMsg ok", "buf", buf)
 
 	//DoGopherLua()
 	//DoGoLua()

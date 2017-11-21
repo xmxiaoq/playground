@@ -65,26 +65,6 @@ func TestGoLua(t *testing.T) {
 	//fmt.Println("golua exit")
 }
 
-const Eight = 8
-
-type MyInt int
-type Data []byte
-
-//go:generate msgp
-type MyStruct struct {
-	Which map[string]*MyInt `msg:"which"`
-	Other Data              `msg:"other"`
-	Nums  [Eight]float64    `msg:"nums"`
-}
-
-type Sample3 struct {
-	Foo       int
-	Bar       int
-	Age       int
-	FirstName string
-	LastName  string
-}
-
 func BenchmarkMsgpack(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 
